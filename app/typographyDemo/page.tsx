@@ -1,6 +1,6 @@
-import Image from "next/image";
+import React from 'react'
 
-export default function Home() {
+export default function TypographyDemo() {
   return (
     <div>
       <h1>H1 - Open Sans Bold 700 Font Size 11</h1>
@@ -43,5 +43,5 @@ export default function Home() {
           unde extricat, amaras.</p>
       </div>
     </div>
-  );
+  )
 }
