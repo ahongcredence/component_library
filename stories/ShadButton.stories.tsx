@@ -65,13 +65,6 @@ export const Default: Story = {
   },
 }
 
-export const Destructive: Story = {
-  args: {
-    variant: "destructive",
-    children: "Destructive Button",
-  },
-}
-
 export const Outline: Story = {
   args: {
     variant: "outline",
@@ -173,7 +166,6 @@ export const AllVariants: Story = {
     <div className="flex flex-col gap-4">
       <div className="flex flex-wrap gap-4">
         <Button variant="default">Default</Button>
-        <Button variant="destructive">Destructive</Button>
         <Button variant="outline">Outline</Button>
         <Button variant="secondary">Secondary</Button>
         <Button variant="ghost">Ghost</Button>
@@ -212,21 +204,6 @@ export const UseCaseForm: Story = {
   ),
 }
 
-export const UseCaseDangerZone: Story = {
-  render: () => (
-    <div className="w-full max-w-md rounded-md border border-destructive/30 p-4">
-      <h3 className="mb-2 font-semibold text-destructive">Danger Zone</h3>
-      <p className="mb-4 text-sm text-muted-foreground">
-        This action cannot be undone. This will permanently delete your account and remove your
-        data from our servers.
-      </p>
-      <Button variant="destructive">
-        <Trash2 />
-        Delete Account
-      </Button>
-    </div>
-  ),
-}
 
 export const UseCaseNotifications: Story = {
   render: () => (

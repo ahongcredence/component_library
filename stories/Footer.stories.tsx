@@ -76,15 +76,3 @@ export const WithContentAbove: Story = {
     </div>
   ),
 };
-
-// Footer with long version number
-export const LongVersion: Story = {
-  args: {
-    version: "3.14.159-beta",
-  },
-  parameters: {
-    viewport: {
-      defaultViewport: 'responsive',
-    },
-  },
-};
