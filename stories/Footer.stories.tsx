@@ -1,11 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Footer from '../../components/footer';
+import Footer from '../components/footer';
 
 const meta: Meta<typeof Footer> = {
   title: 'Components/Footer',
   component: Footer,
   parameters: {
     layout: 'fullscreen',
+    // Set a default viewport that will apply to all stories unless overridden
+    viewport: {
+      defaultViewport: 'responsive',
+    },
   },
   tags: ['autodocs'],
   argTypes: {
@@ -24,12 +28,22 @@ export const Default: Story = {
   args: {
     version: "1.0.0",
   },
+  parameters: {
+    viewport: {
+      defaultViewport: 'responsive',
+    },
+  },
 };
 
 // Footer with different version
 export const WithVersion: Story = {
   args: {
     version: "2.3.1",
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: 'responsive',
+    },
   },
 };
 
@@ -47,6 +61,11 @@ export const MobileView: Story = {
 
 // Footer with content above
 export const WithContentAbove: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: 'responsive',
+    },
+  },
   render: () => (
     <div className="w-full">
       <div className="p-4 bg-gray-50">
@@ -62,5 +81,10 @@ export const WithContentAbove: Story = {
 export const LongVersion: Story = {
   args: {
     version: "3.14.159-beta",
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: 'responsive',
+    },
   },
 };
