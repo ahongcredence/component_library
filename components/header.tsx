@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { ShoppingCart, HelpCircle, LogOut, User, Search } from 'lucide-react';
+import { ShoppingCart, HelpCircle, LogOut, User, Search, Menu, X } from 'lucide-react';
 import { cn } from "@/lib/utils"
 import {
   NavigationMenu,
@@ -127,20 +127,24 @@ const tools: { title: string; href: string; description: string }[] = [
 ];
 
 const Header: React.FC<HeaderProps> = ({ isLoggedIn = true }) => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCorridor, setSelectedCorridor] = useState(corridors[0].href);
+
   return (
     <div>
-      <header className="w-full border-b z-0 border-gray-200 bg-primary text-white">
+      <header className="w-full border-b z-10 border-gray-200 bg-primary text-white">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           {/* Logo on the left */}
           <div className="flex items-center">
-            <div className="h-20 w-20 flex items-center justify-center">
-              <img src="/thumbnail_DLA_logo_transparent-002@2x.png" alt="Logo" />
-              <img src="/fedmallCommerceLogo.png" alt="Logo" />
+            <div className="h-16 w-20 flex items-center justify-center">
+              <img src="/thumbnail_DLA_logo_transparent-002@2x.png" alt="Logo" className="max-h-full max-w-full object-contain" />
+              <img src="/fedmallCommerceLogo.png" alt="Logo" className="max-h-full max-w-full object-contain ml-1 hidden sm:block" />
             </div>
 
-            {/* CUI for mobile - shown next to logo */}
-            <div className="ml-3 hidden">
-              <h1 className="text-lg font-bold text-white">CUI</h1>
+            {/* CUI for mobile - shown next to logo on small screens */}
+            <div className="ml-2 sm:hidden">
+              <h1 className="text-sm font-bold text-white">CUI</h1>
             </div>
           </div>
 
@@ -149,8 +153,20 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn = true }) => {
             <h1 className="text-xl font-bold text-white">CUI</h1>
           </div>
 
+          {/* Mobile menu button */}
+          <div className="block sm:hidden">
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="text-white"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </Button>
+          </div>
+
           {/* Right side buttons: Help, Log out, My Account, Cart */}
-          <div className="flex items-center space-x-1 md:space-x-6 z-10">
+          <div className="hidden sm:flex items-center space-x-1 md:space-x-3 lg:space-x-6 z-10">
             <Button variant="default" size="sm" className="flex flex-col items-center">
               <HelpCircle className="h-4 w-4 mr-1" />
               <span className="hidden md:inline">Help</span>
@@ -167,14 +183,6 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn = true }) => {
                   <User className="h-4 w-4 mr-1" />
                   <span className="hidden md:inline">My Account</span>
                 </Button>
-
-
-
-                {/* Avatar only shows when logged in */}
-                {/* <Avatar className="h-8 w-8">
-                <AvatarImage src="/api/placeholder/32/32" alt="User" />
-                <AvatarFallback>J.</AvatarFallback>
-              </Avatar> */}
               </>
             ) : (
               <Button variant="default" size="sm">
@@ -192,75 +200,145 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn = true }) => {
           </div>
         </div>
       </header>
-      <div className="flex border-b-1" >
-        <div>
-            <div className='p-1 mx-12'>
+
+      {/* Mobile menu panel (only visible when menu is open) */}
+      {mobileMenuOpen && (
+        <div className="sm:hidden bg-white border-b border-gray-200 py-2 px-4">
+          <div className="flex flex-col space-y-2">
+            <Button variant="outline" size="sm" className="flex justify-start items-center">
+              <HelpCircle className="h-4 w-4 mr-2" />
+              <span>Help</span>
+            </Button>
+            
+            {isLoggedIn ? (
+              <>
+                <Button variant="outline" size="sm" className="flex justify-start items-center">
+                  <LogOut className="h-4 w-4 mr-2" />
+                  <span>Log Out</span>
+                </Button>
+                
+                <Button variant="outline" size="sm" className="flex justify-start items-center">
+                  <User className="h-4 w-4 mr-2" />
+                  <span>My Account</span>
+                </Button>
+              </>
+            ) : (
+              <Button variant="outline" size="sm" className="flex justify-start items-center">
+                Sign In
+              </Button>
+            )}
+            
+            <Button variant="outline" size="sm" className="flex justify-start items-center relative">
+              <ShoppingCart className="h-4 w-4 mr-2" />
+              <span>Cart</span>
+              <span className="ml-2 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
+                3
+              </span>
+            </Button>
+
+            <div className="py-2 border-t border-gray-200">
+              <details className="group">
+                <summary className="flex justify-between items-center cursor-pointer list-none py-2">
+                  <span className="font-medium">Corridors</span>
+                  <span className="transition group-open:rotate-180">▼</span>
+                </summary>
+                <ul className="pl-4 mt-1 space-y-1">
+                  {corridors.map((item) => (
+                    <li key={item.title} className="text-sm py-1 border-b border-gray-100">
+                      <a href={item.href} className="hover:text-primary">{item.title}</a>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+
+              <details className="group">
+                <summary className="flex justify-between items-center cursor-pointer list-none py-2">
+                  <span className="font-medium">Tools</span>
+                  <span className="transition group-open:rotate-180">▼</span>
+                </summary>
+                <ul className="pl-4 mt-1 space-y-1">
+                  {tools.map((item) => (
+                    <li key={item.title} className="text-sm py-1 border-b border-gray-100">
+                      <a href={item.href} className="hover:text-primary">{item.title}</a>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Navigation bar with search */}
+      <div className="flex flex-col md:flex-row border-b border-gray-200">
+        {/* Navigation menu for corridors and tools */}
+        <div className="hidden sm:block">
+          <div className="p-1 mx-2 md:mx-6 lg:mx-12">
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger>Corridors</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="flex flex-col w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                    <ul className="grid gap-3 p-4 w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                       {corridors.map((component) => (
                         <ListItem
                           key={component.title}
                           title={component.title}
                           href={component.href}
-                        >
-                        </ListItem>
+                        />
                       ))}
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
-                |
+                <span className="mx-2">|</span>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger>Tools</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="flex flex-col w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                    <ul className="grid gap-3 p-4 w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                       {tools.map((component) => (
                         <ListItem
                           key={component.title}
                           title={component.title}
                           href={component.href}
-                        >
-                        </ListItem>
+                        />
                       ))}
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
-       
-            </div>
+          </div>
         </div>
-        <div>
 
-          <NavigationMenu>
-            <NavigationMenuList>
-
-            </NavigationMenuList>
-          </NavigationMenu>
-
-
-        </div>
-        <div className="flex ml-32 mr-32 p-1">
-          <input 
-            type="text" 
-            placeholder="enter nsn or keyword to search"
-            className="rounded-l-md border border-r-0 px-4 py-1 focus:outline-none focus:ring-2 focus:ring-primary w-xl h-8"
-          />
-          <select className="rounded-r-md border px-4 py-1 focus:outline-none focus:ring-2 focus:ring-primary h-8">
-            {corridors.map((component, idx) => (
-              <option key={idx} value={component.href}>{component.title}</option>
-            ))}
-            
-          </select>
-        </div>
-        <div>
-          <Button variant="ghost" size="sm" className="flex flex-col items-center text-primary underline mt-1">
-     
-            <span className="hidden md:inline">Advanced Search</span>
-          </Button>
+        {/* Search area */}
+        <div className="flex flex-grow flex-col sm:flex-row items-center p-2 px-4 sm:ml-4 md:ml-8 lg:ml-32 sm:mr-2 md:mr-8 lg:mr-32">
+          <div className="flex w-full max-w-2xl">
+            <input 
+              type="text" 
+              placeholder="enter nsn or keyword to search"
+              className="rounded-l-md border border-r-0 px-4 py-1 focus:outline-none focus:ring-2 focus:ring-primary w-full h-8"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <select 
+              className="rounded-r-md border px-2 py-1 focus:outline-none focus:ring-2 focus:ring-primary h-8 text-sm"
+              value={selectedCorridor}
+              onChange={(e) => setSelectedCorridor(e.target.value)}
+            >
+              {corridors.map((component) => (
+                <option key={component.href} value={component.href}>{component.title}</option>
+              ))}
+            </select>
+          </div>
+          <div className="mt-2 sm:mt-0 sm:ml-2">
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="flex items-center text-primary underline"
+            >
+              <span>Advanced Search</span>
+            </Button>
+          </div>
         </div>
       </div>
     </div>
@@ -274,26 +352,23 @@ const ListItem = React.forwardRef<
   return (
     <li>
       <NavigationMenuLink asChild>
-        <div>
-          <a
-            ref={ref}
-            className={cn(
-              "block select-none space-y-1 rounded-md leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground border-b border-gray-200 pb-2 mb-2",
-              className
-            )}
-            {...props}
-          >
-            <div className="flex justify-between text-sm font-medium leading-none">{title} </div>
-            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-              {children}
-            </p>
-          </a>
-
-        </div>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+            {children}
+          </p>
+        </a>
       </NavigationMenuLink>
     </li>
   )
-})
+});
 ListItem.displayName = "ListItem"
 
 export default Header;
