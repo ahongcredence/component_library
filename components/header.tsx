@@ -58,7 +58,7 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn = true }) => {
               </Avatar> */}
             </>
           ) : (
-            <Button variant="outline" size="sm">
+            <Button variant="default" size="sm">
               Sign In
             </Button>
           )}
