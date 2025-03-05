@@ -2,6 +2,8 @@
 
 This Storybook instance documents and showcases our UI component library built with React and shadcn/ui. It serves as both a development environment and living documentation for our component system.
 
+![alt text](image.png)
+
 ## Purpose
 
 - **Development Environment**: Provides an isolated environment to build and test UI components
