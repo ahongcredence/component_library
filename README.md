@@ -1,4 +1,4 @@
-# UI Component Library Storybook
+# Credence/STORES UI React Component Library Storybook
 
 This Storybook instance documents and showcases our UI component library built with React and shadcn/ui. It serves as both a development environment and living documentation for our component system.
 
@@ -12,7 +12,7 @@ This Storybook instance documents and showcases our UI component library built w
 
 ## Components
 
-Our Storybook includes the following UI components:
+Our Storybook includes the following UI components (more to be added):
 
 ### Layout Components
 - **Header**: Application header with responsive behavior and authentication states
