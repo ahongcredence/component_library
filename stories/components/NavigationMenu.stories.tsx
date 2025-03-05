@@ -10,7 +10,7 @@ import {
   NavigationMenuIndicator,
   NavigationMenuViewport,
   navigationMenuTriggerStyle,
-} from "../../components/ui/navigation-menu"
+} from "@/components/ui/navigation-menu"
 import { cn } from "@/lib/utils"
 
 const meta: Meta<typeof NavigationMenu> = {
