@@ -117,3 +117,9 @@
     line-height: var(--line-height-xs);
   }
 }
+
+@layer components {
+  .custom-accordion-trigger {
+    font-family: 'Lato', sans-serif;
+  }
+}
