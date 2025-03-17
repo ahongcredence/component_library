@@ -34,44 +34,11 @@ export const WithImage: Story = {
   ),
 }
 
-// Avatar with Fallback (when image fails to load)
-export const WithFallback: Story = {
-  render: (args) => (
-    <Avatar {...args}>
-      <AvatarImage src="/nonexistent-image.jpg" alt="Avatar" />
-      <AvatarFallback>JD</AvatarFallback>
-    </Avatar>
-  ),
-}
-
 // Avatar with Initials
 export const WithInitials: Story = {
   render: (args) => (
     <Avatar {...args}>
       <AvatarFallback>JD</AvatarFallback>
-    </Avatar>
-  ),
-}
-
-// Avatar with Icon
-export const WithIcon: Story = {
-  render: (args) => (
-    <Avatar {...args}>
-      <AvatarFallback>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="size-4"
-        >
-          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-          <circle cx="12" cy="7" r="4" />
-        </svg>
-      </AvatarFallback>
     </Avatar>
   ),
 }
@@ -214,15 +181,5 @@ export const InteractiveAvatar: Story = {
         <div className="absolute top-full left-1/2 -translate-x-1/2 w-2 h-2 bg-popover rotate-45"></div>
       </div>
     </div>
-  ),
-}
-
-// Responsive Avatar
-export const ResponsiveAvatar: Story = {
-  render: (args) => (
-    <Avatar className="size-8 sm:size-10 md:size-12 lg:size-16">
-      <AvatarImage src="/default_avatar.png" alt="Responsive Avatar" />
-      <AvatarFallback className="text-xs sm:text-sm md:text-base lg:text-lg">RA</AvatarFallback>
-    </Avatar>
   ),
 }

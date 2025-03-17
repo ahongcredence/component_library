@@ -262,38 +262,6 @@ export const WithIndicator: Story = {
   ),
 }
 
-// No Viewport
-export const NoViewport: Story = {
-  args: {
-    viewport: false,
-  },
-  render: (args) => (
-    <NavigationMenu {...args}>
-      <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Menu</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 w-[200px]">
-              {components.slice(0, 3).map((component) => (
-                <li key={component.title}>
-                  <NavigationMenuLink asChild>
-                    <a 
-                      href={component.href}
-                      className="block select-none rounded-md p-2 text-sm hover:bg-accent"
-                    >
-                      {component.title}
-                    </a>
-                  </NavigationMenuLink>
-                </li>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
-  ),
-}
-
 // Responsive Example
 export const Responsive: Story = {
   render: (args) => (
@@ -385,46 +353,5 @@ export const Responsive: Story = {
         </NavigationMenu>
       </div>
     </div>
-  ),
-}
-
-// With Active Item
-export const WithActiveItem: Story = {
-  render: (args) => (
-    <NavigationMenu {...args}>
-      <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Features</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              {components.map((component, index) => (
-                <ListItem 
-                  key={component.title} 
-                  title={component.title} 
-                  href={component.href}
-                  data-active={index === 1}
-                >
-                  {component.description}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink 
-            className={navigationMenuTriggerStyle()}
-            href="#"
-            data-active={true}
-          >
-            Active Link
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink className={navigationMenuTriggerStyle()} href="#">
-            Regular Link
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
   ),
 }

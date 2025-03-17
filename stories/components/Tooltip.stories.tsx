@@ -200,46 +200,6 @@ export const WithDisabledButton: Story = {
   ),
 };
 
-export const InToolbar: Story = {
-  render: () => (
-    <div className="flex items-center justify-between p-4 border rounded-md w-full max-w-md">
-      <div className="flex space-x-2">
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button variant="ghost" size="icon">
-              <User className="h-4 w-4" />
-              <span className="sr-only">User settings</span>
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent>User settings</TooltipContent>
-        </Tooltip>
-        
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button variant="ghost" size="icon">
-              <Settings className="h-4 w-4" />
-              <span className="sr-only">Preferences</span>
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent>Preferences</TooltipContent>
-        </Tooltip>
-      </div>
-      
-      <div>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button size="sm">
-              <Plus className="h-4 w-4 mr-2" />
-              Add New
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent>Create a new project</TooltipContent>
-        </Tooltip>
-      </div>
-    </div>
-  ),
-};
-
 export const Controlled: Story = {
   render: () => {
     const [open, setOpen] = React.useState(false);
