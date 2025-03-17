@@ -1,177 +1,226 @@
-import React, { useState } from 'react';
-import { Meta, StoryObj } from '@storybook/react';
-import { 
-  Alert, 
-  AlertDescription, 
-  AlertTitle 
-} from '@/components/ui/alert';
-import { Button } from '@/components/ui/button';
-import { 
-  Terminal, 
-  AlertCircle, 
-  Info as InfoIcon, 
-  CheckCircle,
-  X
-} from 'lucide-react';
+import * as React from "react"
+import { Meta, StoryObj } from "@storybook/react"
+import { AlertTriangle, InfoIcon, CheckCircleIcon } from "lucide-react"
+
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 const meta: Meta<typeof Alert> = {
-  title: 'Components/Alert',
+  title: "Components/Alert",
   component: Alert,
-  tags: ['autodocs'],
-  parameters: {
-    layout: 'centered',
-  },
-};
+  tags: ["autodocs"],
+  argTypes: {
+    variant: {
+      control: "select",
+      options: ["default", "destructive"],
+      description: "The visual style of the alert"
+    },
+    closable: {
+      control: "boolean",
+      description: "Whether the alert can be dismissed"
+    },
+    onClose: {
+      action: "closed",
+      description: "Action to perform when close button is clicked"
+    }
+  }
+}
 
-export default meta;
-type Story = StoryObj<typeof Alert>;
-
-// Component for demonstrating dismissible alerts
-const DismissibleAlert = ({ children, variant, className }: { 
-  children: React.ReactNode, 
-  variant?: "default" | "destructive",
-  className?: string
-}) => {
-  const [isVisible, setIsVisible] = useState(true);
-  
-  if (!isVisible) return null;
-  
-  // Check if children contains AlertTitle to adjust layout and spacing
-  const hasTitle = React.Children.toArray(children).some(
-    child => React.isValidElement(child) && child.type === AlertTitle
-  );
-  
-  return (
-    <Alert variant={variant} className={`relative pr-10 ${className || ''}`}>
-      {children}
-      <Button 
-        variant="ghost" 
-        size="sm" 
-        className={`absolute right-2 h-6 w-6 p-0 ${hasTitle ? 'top-2' : 'top-1/2 -translate-y-1/2'}`}
-        onClick={() => setIsVisible(false)}
-      >
-        <X className="h-4 w-4" />
-        <span className="sr-only">Close</span>
-      </Button>
-    </Alert>
-  );
-};
+export default meta
+type Story = StoryObj<typeof Alert>
 
 export const Default: Story = {
-  render: () => (
-    <DismissibleAlert>
+  
+  render: (args) => { 
+    const [visible, setIsVisible] = React.useState(true)
+    if (!visible) {
+      return <div></div>;
+    }
+    return (
+    <Alert {...args} onClose={() => setIsVisible(false)}>
       <AlertTitle>Heads up!</AlertTitle>
       <AlertDescription>
-        You can add components to your app using the cli.
+        You can add components to your app using the CLI.
       </AlertDescription>
-    </DismissibleAlert>
-  ),
-};
+    </Alert>
+  )},
+  args: {
+    variant: "default",
+    closable: true
+  }
+}
 
-export const WithTerminalIcon: Story = {
-  render: () => (
-    <DismissibleAlert>
-      <Terminal className="h-4 w-4" />
-      <AlertTitle>Heads up!</AlertTitle>
-      <AlertDescription>
-        You can add components to your app using the cli.
-      </AlertDescription>
-    </DismissibleAlert>
-  ),
-};
-
-export const Success: Story = {
-  render: () => (
-    <DismissibleAlert className="border-green-500 bg-green-50 dark:bg-green-950">
-      <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400" />
-      <AlertTitle>Success</AlertTitle>
-      <AlertDescription>
-        Your changes have been saved successfully.
-      </AlertDescription>
-    </DismissibleAlert>
-  ),
-};
-
-export const Error: Story = {
-  render: () => (
-    <DismissibleAlert 
-      variant="destructive" 
-      className="border-2 border-black text-accent-rust [&>svg]:text-current *:data-[slot=alert-description]:text-destructive-foreground/80"
-    >
-      <AlertCircle className="h-4 w-4" />
+export const Destructive: Story = {
+  render: (args) => (
+    <Alert {...args}>
+      <AlertTriangle />
       <AlertTitle>Error</AlertTitle>
       <AlertDescription>
-        There was a problem with your request. Please try again.
+        Your session has expired. Please log in again.
       </AlertDescription>
-    </DismissibleAlert>
+    </Alert>
   ),
-};
+  args: {
+    variant: "error",
+    closable: true
+  }
+}
 
-export const Info: Story = {
-  render: () => (
-    <DismissibleAlert className="border-blue-500 bg-blue-50 dark:bg-blue-950">
-      <InfoIcon className="h-4 w-4 text-blue-600 dark:text-blue-400" />
-      <AlertTitle>Information</AlertTitle>
+export const Warning: Story = {
+  render: (args) => (
+    <Alert {...args}>
+      <AlertTriangle />
+      <AlertTitle>Warning</AlertTitle>
       <AlertDescription>
-        This action will take some time to complete.
+        This Space for Urgent Messages if Needed
       </AlertDescription>
-    </DismissibleAlert>
+    </Alert>
   ),
-};
+  args: {
+    variant: "warning",
+    closable: true // Enable the close button for warning alerts
+  }
+}
 
-export const WithLongText: Story = {
-  render: () => (
-    <DismissibleAlert>
-      <AlertCircle className="h-4 w-4" />
-      <AlertTitle>Important Notice</AlertTitle>
+export const WithIcon: Story = {
+  render: (args) => (
+    <Alert {...args}>
+      <InfoIcon />
+      <AlertTitle>Note</AlertTitle>
       <AlertDescription>
-        This is a longer description that might span multiple lines to demonstrate
-        how the Alert component handles longer content. The alert component is designed
-        to be flexible and accommodate varying amounts of text while maintaining
-        its aesthetic appeal and readability.
+        This action cannot be undone. This will permanently delete your account
+        and remove your data from our servers.
       </AlertDescription>
-    </DismissibleAlert>
+    </Alert>
   ),
-};
+  args: {
+    variant: "default"
+  }
+}
+
+export const SuccessAlert: Story = {
+  render: (args) => (
+    <Alert {...args} className="border-green-500 bg-green-50 text-green-800">
+      <CheckCircleIcon className="text-green-500" />
+      <AlertTitle>Success</AlertTitle>
+      <AlertDescription className="text-green-700">
+        Your changes have been saved successfully.
+      </AlertDescription>
+    </Alert>
+  ),
+  args: {
+    variant: "default"
+  }
+}
 
 export const TitleOnly: Story = {
-  render: () => (
-    <DismissibleAlert>
-      <AlertTitle>Notification</AlertTitle>
-    </DismissibleAlert>
+  render: (args) => (
+    <Alert {...args}>
+      <InfoIcon />
+      <AlertTitle>This is just a title with no description</AlertTitle>
+    </Alert>
   ),
-};
+  args: {
+    variant: "default"
+  }
+}
 
 export const DescriptionOnly: Story = {
-  render: () => (
-    <DismissibleAlert>
+  render: (args) => (
+    <Alert {...args}>
+      <InfoIcon />
       <AlertDescription>
-        This alert contains only a description without a title.
+        This is just a description with no title. Sometimes you might want to use this for simple messages.
       </AlertDescription>
-    </DismissibleAlert>
+    </Alert>
   ),
-};
+  args: {
+    variant: "default"
+  }
+}
 
-export const MultipleAlerts: Story = {
-  render: () => (
-    <div className="flex flex-col space-y-4">
-      <DismissibleAlert>
-        <InfoIcon className="h-4 w-4" />
-        <AlertTitle>Info</AlertTitle>
-        <AlertDescription>System maintenance scheduled for tonight.</AlertDescription>
-      </DismissibleAlert>
+export const WithAction: Story = {
+  render: (args) => (
+    <Alert {...args}>
+      <InfoIcon />
+      <AlertTitle>Browser Update Available</AlertTitle>
+      <AlertDescription>
+        <p>A new version of this browser is available with important security updates.</p>
+        <div className="mt-4 flex gap-2">
+          <button className="rounded-md bg-primary px-2.5 py-1.5 text-xs font-medium text-primary-foreground hover:bg-primary/90">
+            Update now
+          </button>
+          <button className="rounded-md border border-input bg-background px-2.5 py-1.5 text-xs font-medium hover:bg-accent hover:text-accent-foreground">
+            Remind me later
+          </button>
+        </div>
+      </AlertDescription>
+    </Alert>
+  ),
+  args: {
+    variant: "default"
+  }
+}
+
+export const Closable: Story = {
+  render: (args) => {
+    const [isVisible, setIsVisible] = React.useState(true)
+    
+    if (!isVisible) {
+      return (
+        <div className="p-4 border border-dashed rounded-lg border-muted-foreground">
+          <p className="text-sm text-muted-foreground">Alert dismissed</p>
+        </div>
+      )
+    }
+    
+    return (
+      <Alert 
+        {...args} 
+        onClose={() => setIsVisible(false)}
+      >
+        <InfoIcon />
+        <AlertTitle>Dismissible Alert</AlertTitle>
+        <AlertDescription>
+          This alert can be dismissed by clicking the close button in the corner.
+        </AlertDescription>
+      </Alert>
+    )
+  },
+  args: {
+    variant: "default",
+    closable: true // Enable the close button
+  }
+}
+
+export const CustomColors: Story = {
+  render: (args) => (
+    <div className="flex flex-col gap-4">
+      <Alert {...args} className="border-blue-500 bg-blue-50 text-blue-800">
+        <InfoIcon className="text-blue-500" />
+        <AlertTitle>Information</AlertTitle>
+        <AlertDescription className="text-blue-700">
+          This is an informational message with custom blue styling.
+        </AlertDescription>
+      </Alert>
       
-      <DismissibleAlert variant="destructive" className="border-2 border-black text-accent-rust [&>svg]:text-current *:data-[slot=alert-description]:text-destructive-foreground/80">
-        <AlertCircle className="h-4 w-4" />
-        <AlertTitle>Error</AlertTitle>
-        <AlertDescription>Failed to upload document.</AlertDescription>
-      </DismissibleAlert>
+      <Alert {...args} className="border-amber-500 bg-amber-50 text-amber-800">
+        <AlertTriangle className="text-amber-500" />
+        <AlertTitle>Warning</AlertTitle>
+        <AlertDescription className="text-amber-700">
+          This is a warning message with custom amber styling.
+        </AlertDescription>
+      </Alert>
       
-      <DismissibleAlert className="border-green-500 bg-green-50 dark:bg-green-950">
-        <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400" />
-        <AlertTitle>Success</AlertTitle>
-        <AlertDescription>Profile updated successfully.</AlertDescription>
-      </DismissibleAlert>
+      <Alert {...args} className="border-purple-500 bg-purple-50 text-purple-800">
+        <InfoIcon className="text-purple-500" />
+        <AlertTitle>Tip</AlertTitle>
+        <AlertDescription className="text-purple-700">
+          This is a tip message with custom purple styling.
+        </AlertDescription>
+      </Alert>
     </div>
   ),
-};
+  args: {
+    variant: "default"
+  }
+}

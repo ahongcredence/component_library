@@ -180,12 +180,38 @@ export const AllSizes: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
       <div className="flex flex-wrap items-center gap-4">
-        <Button size="sm">Small</Button>
-        <Button size="default">Default</Button>
-        <Button size="lg">Large</Button>
-        <Button size="icon">
-          <Settings />
-        </Button>
+        {/* Small buttons */}
+        <div className="flex gap-2">
+          <Button size="sm" variant="default">Small</Button>
+          <Button size="sm" variant="outline">Small</Button>
+          <Button size="sm" variant="secondary">Small</Button>
+          <Button size="sm" variant="outlineSecondary">Small</Button>
+          <Button size="sm" variant="link">Small</Button>
+        </div>
+        {/* Default size buttons */}
+        <div className="flex gap-2">
+          <Button size="default" variant="default">Default</Button>
+          <Button size="default" variant="outline">Default</Button>
+          <Button size="default" variant="secondary">Default</Button>
+          <Button size="default" variant="outlineSecondary">Default</Button>
+          <Button size="default" variant="link">Default</Button>
+        </div>
+        {/* Large buttons */}
+        <div className="flex gap-2">
+          <Button size="lg" variant="default">Large</Button>
+          <Button size="lg" variant="outline">Large</Button>
+          <Button size="lg" variant="secondary">Large</Button>
+          <Button size="lg" variant="outlineSecondary">Large</Button>
+          <Button size="lg" variant="link">Large</Button>
+        </div>
+        {/* Icon buttons */}
+        <div className="flex gap-2">
+          <Button size="icon" variant="default"><Settings /></Button>
+          <Button size="icon" variant="outline"><Settings /></Button>
+          <Button size="icon" variant="secondary"><Settings /></Button>
+          <Button size="icon" variant="outlineSecondary"><Settings /></Button>
+          <Button size="icon" variant="link"><Settings /></Button>
+        </div>
       </div>
     </div>
   ),

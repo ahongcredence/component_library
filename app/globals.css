@@ -2,8 +2,8 @@
 @import "tailwindcss";
 @theme {
   /* Colors */
-  --color-primary: hsl(208, 89%, 24%);          /* Navy Blue */
-  --color-primary-hover: hsl(207, 84%, 28%);    /* Darker Navy Blue */
+  --color-primary: hsl(201, 100%, 25%);          /* Navy Blue */
+  --color-primary-hover: hsl(201, 100%, 20%);    /* Darker Navy Blue */
   --color-primary-foreground: hsl(0, 0%, 100%); /* White */
   --color-secondary: hsl(16, 81%, 35%);         /* Rust Red */
   --color-secondary-hover: hsl(16, 81%, 28%);   /* Darker Rust Red */
@@ -17,7 +17,7 @@
   --color-accent-rust-hover: hsl(16, 81%, 28%); /* Darker Rust Red */
   --color-accent-gray: hsl(0, 0%, 64%);        /* Medium Gray */
   --color-success: hsl(156, 100%, 26%);        /* Green */
-  --color-warning: hsl(35, 100%, 46%);         /* Orange */
+  --color-warning: hsl(38, 100%, 65%);         /* Orange */
   --color-error: hsl(356, 84%, 38%);           /* Red */
   --color-link: hsl(203, 87%, 34%);            /* Blue */
   --color-link-hover: hsl(207, 84%, 28%);      /* Darker Blue */

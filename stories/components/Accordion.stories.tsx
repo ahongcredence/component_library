@@ -53,11 +53,7 @@ export const Default: Story = {
         >
           <AccordionTrigger className="flex justify-between items-center p-5 hover:bg-gray-50 transition-all duration-200 font-medium text-lg">
             <div className="flex items-center space-x-3">
-              <div className="bg-blue-100 p-2 rounded-full">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-600">
-                  <path d="M12 22s8-4 8-10V4l-8-2-8 2v8c0 6 8 10 8 10z" />
-                </svg>
-              </div>
+              
               <span>Security Features</span>
             </div>
           </AccordionTrigger>
@@ -69,79 +65,6 @@ export const Default: Story = {
               </p>
               <div className="flex justify-end mt-2">
                 <button className="text-sm text-blue-600 hover:text-blue-800 font-medium">Learn more →</button>
-              </div>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-        
-        <AccordionItem 
-          value="item2"
-          className="border-b border-gray-200 last:border-0"
-        >
-          <AccordionTrigger className="flex justify-between items-center p-5 hover:bg-gray-50 transition-all duration-200 font-medium text-lg">
-            <div className="flex items-center space-x-3">
-              <div className="bg-green-100 p-2 rounded-full">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-green-600">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-                  <line x1="9" y1="9" x2="9.01" y2="9" />
-                  <line x1="15" y1="9" x2="15.01" y2="9" />
-                </svg>
-              </div>
-              <span>User Experience</span>
-            </div>
-          </AccordionTrigger>
-          <AccordionContent className="bg-gray-50 p-5 text-gray-700">
-            <div className="space-y-3">
-              <h3 className="font-semibold text-green-600">Intuitive Design</h3>
-              <p className="leading-relaxed">
-                Our user-centered approach focuses on creating intuitive interfaces that are accessible to all. Customizable dashboards and themes allow you to personalize your experience.
-              </p>
-              <div className="mt-3 grid grid-cols-3 gap-2">
-                <div className="bg-white p-2 rounded border border-gray-200 text-center text-sm">
-                  <span className="block text-green-600 font-bold">99%</span>
-                  <span className="text-xs text-gray-500">Satisfaction</span>
-                </div>
-                <div className="bg-white p-2 rounded border border-gray-200 text-center text-sm">
-                  <span className="block text-green-600 font-bold">24/7</span>
-                  <span className="text-xs text-gray-500">Support</span>
-                </div>
-                <div className="bg-white p-2 rounded border border-gray-200 text-center text-sm">
-                  <span className="block text-green-600 font-bold">5★</span>
-                  <span className="text-xs text-gray-500">Rating</span>
-                </div>
-              </div>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-        
-        <AccordionItem 
-          value="item3"
-          className="border-b border-gray-200 last:border-0"
-        >
-          <AccordionTrigger className="flex justify-between items-center p-5 hover:bg-gray-50 transition-all duration-200 font-medium text-lg">
-            <div className="flex items-center space-x-3">
-              <div className="bg-purple-100 p-2 rounded-full">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-purple-600">
-                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-                </svg>
-              </div>
-              <span>Performance Metrics</span>
-            </div>
-          </AccordionTrigger>
-          <AccordionContent className="bg-gray-50 p-5 text-gray-700">
-            <div className="space-y-3">
-              <h3 className="font-semibold text-purple-600">Analytics Dashboard</h3>
-              <p className="leading-relaxed">
-                Track your progress with comprehensive analytics and real-time reporting. Visualize trends and identify opportunities for optimization.
-              </p>
-              <div className="mt-4 h-12 bg-gray-200 rounded-full overflow-hidden">
-                <div className="h-full bg-gradient-to-r from-purple-500 to-purple-300 w-3/4 flex items-center">
-                  <span className="ml-3 text-xs font-bold text-white">75% Performance Increase</span>
-                </div>
-              </div>
-              <div className="flex justify-end mt-2">
-                <button className="text-sm text-purple-600 hover:text-purple-800 font-medium">View full report →</button>
               </div>
             </div>
           </AccordionContent>
