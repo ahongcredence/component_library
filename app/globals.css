@@ -116,10 +116,54 @@
     font-size: var(--font-size-xs);
     line-height: var(--line-height-xs);
   }
+
+  span {
+    font-family: 'Lato', sans-serif;
+  }
 }
 
 @layer components {
   .custom-accordion-trigger {
     font-family: 'Lato', sans-serif;
   }
+  .header-icon-container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Icon choice list item */
+  .icon-choice {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Button inside the list item */
+  .icon-choice button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: inherit;
+    padding: 0;
+  }
+  
+  /* SVG icon */
+  .icon-choice button svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  /* Text below icon */
+  .icon-choice button span {
+    font-size: 0.85rem;
+  }
 }
+
+
+
