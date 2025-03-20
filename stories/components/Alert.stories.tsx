@@ -192,35 +192,3 @@ export const Closable: Story = {
   }
 }
 
-export const CustomColors: Story = {
-  render: (args) => (
-    <div className="flex flex-col gap-4">
-      <Alert {...args} className="border-blue-500 bg-blue-50 text-blue-800">
-        <InfoIcon className="text-blue-500" />
-        <AlertTitle>Information</AlertTitle>
-        <AlertDescription className="text-blue-700">
-          This is an informational message with custom blue styling.
-        </AlertDescription>
-      </Alert>
-      
-      <Alert {...args} className="border-amber-500 bg-amber-50 text-amber-800">
-        <AlertTriangle className="text-amber-500" />
-        <AlertTitle>Warning</AlertTitle>
-        <AlertDescription className="text-amber-700">
-          This is a warning message with custom amber styling.
-        </AlertDescription>
-      </Alert>
-      
-      <Alert {...args} className="border-purple-500 bg-purple-50 text-purple-800">
-        <InfoIcon className="text-purple-500" />
-        <AlertTitle>Tip</AlertTitle>
-        <AlertDescription className="text-purple-700">
-          This is a tip message with custom purple styling.
-        </AlertDescription>
-      </Alert>
-    </div>
-  ),
-  args: {
-    variant: "default"
-  }
-}

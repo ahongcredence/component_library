@@ -18,85 +18,26 @@ export const Default: Story = {
                 <BreadcrumbList className="flex items-center space-x-1">
                     <BreadcrumbItem className="flex items-center transition-colors duration-200 hover:text-blue-600 dark:hover:text-blue-400">
                         <div className="p-1 bg-blue-50 dark:bg-blue-900/30 rounded-full mr-1">
-                            <svg 
-                                xmlns="http://www.w3.org/2000/svg" 
-                                viewBox="0 0 24 24" 
-                                fill="none" 
-                                stroke="currentColor" 
-                                strokeWidth="2" 
-                                strokeLinecap="round" 
-                                strokeLinejoin="round" 
-                                className="h-3.5 w-3.5 text-black dark:text-white"
-                            >
-                                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                                <polyline points="9 22 9 12 15 12 15 22" />
-                            </svg>
+                          
                         </div>
                         <BreadcrumbLink href="/" className="text-sm hover:underline">Home</BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator className="text-gray-400">
-                        <svg 
-                            xmlns="http://www.w3.org/2000/svg" 
-                            viewBox="0 0 24 24" 
-                            fill="none" 
-                            stroke="currentColor" 
-                            strokeWidth="2" 
-                            strokeLinecap="round" 
-                            strokeLinejoin="round" 
-                            className="h-4 w-4"
-                        >
-                            <polyline points="9 18 15 12 9 6" />
-                        </svg>
+                      
                     </BreadcrumbSeparator>
                     <BreadcrumbItem className="flex items-center transition-colors duration-200 hover:text-blue-600 dark:hover:text-blue-400">
                         <div className="p-1 bg-purple-50 dark:bg-purple-900/30 rounded-full mr-1">
-                            <svg 
-                                xmlns="http://www.w3.org/2000/svg" 
-                                viewBox="0 0 24 24" 
-                                fill="none" 
-                                stroke="currentColor" 
-                                strokeWidth="2" 
-                                strokeLinecap="round" 
-                                strokeLinejoin="round" 
-                                className="h-3.5 w-3.5 text-black dark:text-white"
-                            >
-                                <circle cx="12" cy="12" r="10" />
-                                <path d="M12 16v-4" />
-                                <path d="M12 8h.01" />
-                            </svg>
+                         
                         </div>
                         <BreadcrumbLink href="/about" className="text-sm hover:underline">About</BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator className="text-gray-400">
-                        <svg 
-                            xmlns="http://www.w3.org/2000/svg" 
-                            viewBox="0 0 24 24" 
-                            fill="none" 
-                            stroke="currentColor" 
-                            strokeWidth="2" 
-                            strokeLinecap="round" 
-                            strokeLinejoin="round" 
-                            className="h-4 w-4"
-                        >
-                            <polyline points="9 18 15 12 9 6" />
-                        </svg>
+                     
                     </BreadcrumbSeparator>
                     <BreadcrumbItem>
                         <div className="flex items-center bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full">
                             <div className="p-1 bg-green-50 dark:bg-green-900/30 rounded-full mr-1">
-                                <svg 
-                                    xmlns="http://www.w3.org/2000/svg" 
-                                    viewBox="0 0 24 24" 
-                                    fill="none" 
-                                    stroke="currentColor" 
-                                    strokeWidth="2" 
-                                    strokeLinecap="round" 
-                                    strokeLinejoin="round" 
-                                    className="h-3.5 w-3.5 text-black dark:text-white"
-                                >
-                                    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-                                    <polyline points="14 2 14 8 20 8" />
-                                </svg>
+                            
                             </div>
                             <BreadcrumbPage className="text-sm font-bold">Current Page</BreadcrumbPage>
                         </div>
@@ -113,54 +54,18 @@ export const NoSeparator: Story = {
             <Breadcrumb {...args} className="font-medium">
                 <BreadcrumbList className="flex items-center">
                     <BreadcrumbItem className="px-3 py-1 rounded-l-full bg-white dark:bg-gray-800 shadow-sm border-r border-gray-100 dark:border-gray-700 flex items-center">
-                        <svg 
-                            xmlns="http://www.w3.org/2000/svg" 
-                            viewBox="0 0 24 24" 
-                            fill="none" 
-                            stroke="currentColor" 
-                            strokeWidth="2" 
-                            strokeLinecap="round" 
-                            strokeLinejoin="round" 
-                            className="h-3.5 w-3.5 mr-1.5 text-black dark:text-white"
-                        >
-                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                            <polyline points="9 22 9 12 15 12 15 22" />
-                        </svg>
+                    
+                        
                         <BreadcrumbLink href="/" className="text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</BreadcrumbLink>
                     </BreadcrumbItem>
                     
                     <BreadcrumbItem className="px-3 py-1 bg-white dark:bg-gray-800 shadow-sm border-r border-gray-100 dark:border-gray-700 flex items-center">
-                        <svg 
-                            xmlns="http://www.w3.org/2000/svg" 
-                            viewBox="0 0 24 24" 
-                            fill="none" 
-                            stroke="currentColor" 
-                            strokeWidth="2" 
-                            strokeLinecap="round" 
-                            strokeLinejoin="round" 
-                            className="h-3.5 w-3.5 mr-1.5 text-black dark:text-white"
-                        >
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="M12 16v-4" />
-                            <path d="M12 8h.01" />
-                        </svg>
+                      
                         <BreadcrumbLink href="/about" className="text-sm hover:text-purple-600 dark:hover:text-purple-400 transition-colors">About</BreadcrumbLink>
                     </BreadcrumbItem>
                     
                     <BreadcrumbItem className="px-3 py-1 rounded-r-full bg-gray-100 dark:bg-gray-700 shadow-sm flex items-center">
-                        <svg 
-                            xmlns="http://www.w3.org/2000/svg" 
-                            viewBox="0 0 24 24" 
-                            fill="none" 
-                            stroke="currentColor" 
-                            strokeWidth="2" 
-                            strokeLinecap="round" 
-                            strokeLinejoin="round" 
-                            className="h-3.5 w-3.5 mr-1.5 text-black dark:text-white"
-                        >
-                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-                            <polyline points="14 2 14 8 20 8" />
-                        </svg>
+                      
                         <BreadcrumbPage className="text-sm font-bold">Current Page</BreadcrumbPage>
                     </BreadcrumbItem>
                 </BreadcrumbList>
@@ -176,68 +81,23 @@ export const Ellipses: Story = {
                 <BreadcrumbList className="flex items-center space-x-1">
                     <BreadcrumbItem className="transition-all duration-200 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-md">
                         <BreadcrumbLink href="/" className="flex items-center px-2.5 py-1.5 text-sm hover:underline">
-                            <svg 
-                                xmlns="http://www.w3.org/2000/svg" 
-                                viewBox="0 0 24 24" 
-                                fill="none" 
-                                stroke="currentColor" 
-                                strokeWidth="2" 
-                                strokeLinecap="round" 
-                                strokeLinejoin="round" 
-                                className="h-3.5 w-3.5 mr-1.5"
-                            >
-                                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                                <polyline points="9 22 9 12 15 12 15 22" />
-                            </svg>
+                        
                             Home
                         </BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator className="text-gray-400">
-                        <svg 
-                            xmlns="http://www.w3.org/2000/svg" 
-                            viewBox="0 0 24 24" 
-                            fill="none" 
-                            stroke="currentColor" 
-                            strokeWidth="2" 
-                            strokeLinecap="round" 
-                            strokeLinejoin="round" 
-                            className="h-4 w-4"
-                        >
-                            <polyline points="9 18 15 12 9 6" />
-                        </svg>
+                        
                     </BreadcrumbSeparator>
                     <BreadcrumbEllipsis className="flex">
                         <button className="px-1.5 py-1 bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors flex items-center gap-1">
                             <span>...</span>
-                            <svg 
-                                xmlns="http://www.w3.org/2000/svg" 
-                                viewBox="0 0 24 24" 
-                                fill="none" 
-                                stroke="currentColor" 
-                                strokeWidth="2" 
-                                strokeLinecap="round" 
-                                strokeLinejoin="round" 
-                                className="h-3.5 w-3.5 ml-0.5 opacity-70"
-                            >
-                                <path d="m6 9 6 6 6-6" />
-                            </svg>
+                           
                             <span className="sr-only">More pages</span>
                         </button>
                         {/* Dropdown items would go here */}
                     </BreadcrumbEllipsis>
                     <BreadcrumbSeparator className="text-gray-400">
-                        <svg 
-                            xmlns="http://www.w3.org/2000/svg" 
-                            viewBox="0 0 24 24" 
-                            fill="none" 
-                            stroke="currentColor" 
-                            strokeWidth="2" 
-                            strokeLinecap="round" 
-                            strokeLinejoin="round" 
-                            className="h-4 w-4"
-                        >
-                            <polyline points="9 18 15 12 9 6" />
-                        </svg>
+                    
                     </BreadcrumbSeparator>
                     <BreadcrumbItem className="transition-all duration-200 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-md">
                         <BreadcrumbLink href="/about" className="flex items-center px-2.5 py-1.5 text-sm hover:underline">
@@ -259,34 +119,11 @@ export const Ellipses: Story = {
                         </BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator className="text-gray-400">
-                        <svg 
-                            xmlns="http://www.w3.org/2000/svg" 
-                            viewBox="0 0 24 24" 
-                            fill="none" 
-                            stroke="currentColor" 
-                            strokeWidth="2" 
-                            strokeLinecap="round" 
-                            strokeLinejoin="round" 
-                            className="h-4 w-4"
-                        >
-                            <polyline points="9 18 15 12 9 6" />
-                        </svg>
+                      
                     </BreadcrumbSeparator>
                     <BreadcrumbItem>
                         <div className="flex items-center bg-gray-100 dark:bg-gray-800 rounded-md px-2.5 py-1.5">
-                            <svg 
-                                xmlns="http://www.w3.org/2000/svg" 
-                                viewBox="0 0 24 24" 
-                                fill="none" 
-                                stroke="currentColor" 
-                                strokeWidth="2" 
-                                strokeLinecap="round" 
-                                strokeLinejoin="round" 
-                                className="h-3.5 w-3.5 mr-1.5"
-                            >
-                                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-                                <polyline points="14 2 14 8 20 8" />
-                            </svg>
+                      
                             <BreadcrumbPage className="text-sm font-bold">Current Page</BreadcrumbPage>
                         </div>
                     </BreadcrumbItem>

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Footer from '../../components/footer';
+import Footer from '../../components/Footer';
 
 const meta: Meta<typeof Footer> = {
   title: 'Examples/Footer',
@@ -34,19 +34,6 @@ export const Default: Story = {
     },
   },
 };
-
-// Footer with different version
-export const WithVersion: Story = {
-  args: {
-    version: "2.3.1",
-  },
-  parameters: {
-    viewport: {
-      defaultViewport: 'responsive',
-    },
-  },
-};
-
 // Mobile view
 export const MobileView: Story = {
   parameters: {
@@ -57,22 +44,4 @@ export const MobileView: Story = {
   args: {
     version: "1.0.0",
   },
-};
-
-// Footer with content above
-export const WithContentAbove: Story = {
-  parameters: {
-    viewport: {
-      defaultViewport: 'responsive',
-    },
-  },
-  render: () => (
-    <div className="w-full">
-      <div className="p-4 bg-gray-50">
-        <h2 className="text-xl font-bold mb-2">Page Content</h2>
-        <p>This demonstrates how the footer looks with content above it.</p>
-      </div>
-      <Footer version="1.0.0" />
-    </div>
-  ),
 };
