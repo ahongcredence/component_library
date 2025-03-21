@@ -21,7 +21,7 @@ const config: StorybookConfig = {
     autodocs: "tag",
   },
   staticDirs: [
-    path.resolve(__dirname, '../stories/public')  // Point to public folder inside stories directory
+    path.resolve(__dirname, '../public')  // Point to public folder inside stories directory
   ],
   webpackFinal: async (config) => {
     // Add path aliases for @/ imports
