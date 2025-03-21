@@ -23,6 +23,16 @@ const config: StorybookConfig = {
   staticDirs: [
     path.resolve(__dirname, '../stories/public')  // Point to public folder inside stories directory
   ],
+  webpackFinal: async (config) => {
+    // Add path aliases for @/ imports
+    if (config.resolve) {
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        '@': path.resolve(__dirname, '..'),
+      };
+    }
+    return config;
+  },
 };
 
 export default config;
