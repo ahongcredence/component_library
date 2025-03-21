@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+*storybook.log
+
+/stories/Footer.stories.tsx
+/stories/Header.stories.tsx

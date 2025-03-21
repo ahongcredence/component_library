@@ -1,0 +1,32 @@
+{
+    "family": "storybook-task",
+    "networkMode": "awsvpc",
+    "executionRoleArn": "arn:aws:iam::153717966029:role/ecsTaskExecutionRole",
+    "containerDefinitions": [
+      {
+        "name": "storybook-container",
+        "image": "153717966029.dkr.ecr.us-east-1.amazonaws.com/ui_components/storybook:latest",
+        "essential": true,
+        "portMappings": [
+          {
+            "containerPort": 6006,
+            "hostPort": 6006,
+            "protocol": "tcp"
+          }
+        ],
+        "logConfiguration": {
+          "logDriver": "awslogs",
+          "options": {
+            "awslogs-group": "/ecs/storybook-task",
+            "awslogs-region": "us-east-1",
+            "awslogs-stream-prefix": "ecs"
+          }
+        }
+      }
+    ],
+    "requiresCompatibilities": [
+      "FARGATE"
+    ],
+    "cpu": "256",
+    "memory": "512"
+  }

@@ -1,24 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import "tailwindcss";
-
 @theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Colors */
+  --color-primary: hsl(201, 100%, 25%);          /* Navy Blue */
+  --color-primary-hover: hsl(201, 100%, 20%);    /* Darker Navy Blue */
+  --color-primary-foreground: hsl(0, 0%, 100%); /* White */
+  --color-secondary: hsl(16, 81%, 35%);         /* Rust Red */
+  --color-secondary-hover: hsl(16, 81%, 28%);   /* Darker Rust Red */
+  --color-text: hsl(0, 0%, 20%);               /* Dark Gray */
+  --color-text-dark: hsl(0, 0%, 0%);           /* Black */
+  --color-text-light: hsl(0, 0%, 100%);        /* White */
+  --color-background: hsl(0, 0%, 100%);        /* White */
+  --color-background-alt: hsl(220, 13%, 96%);  /* Light Gray */
+  --color-accent: hsl(222, 19%, 89%);          /* Light Blue Gray */
+  --color-accent-rust: hsl(16, 81%, 35%);      /* Rust Red */
+  --color-accent-rust-hover: hsl(16, 81%, 28%); /* Darker Rust Red */
+  --color-accent-gray: hsl(0, 0%, 64%);        /* Medium Gray */
+  --color-success: hsl(156, 100%, 26%);        /* Green */
+  --color-warning: hsl(38, 100%, 65%);         /* Orange */
+  --color-error: hsl(356, 84%, 38%);           /* Red */
+  --color-link: hsl(203, 87%, 34%);            /* Blue */
+  --color-link-hover: hsl(207, 84%, 28%);      /* Darker Blue */
+  
+  /* Font Sizes */
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.375rem;   /* 22px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.75rem;   /* 28px */
+  --font-size-4xl: 2rem;      /* 32px */
+  --font-size-5xl: 2.5rem;    /* 40px */
+  
+  /* Line Heights */
+  --line-height-xs: 1rem;        /* 16px */
+  --line-height-sm: 1.25rem;     /* 20px */
+  --line-height-base: 1.375rem;  /* 22px */
+  --line-height-lg: 1.5rem;      /* 24px */
+  --line-height-xl: 1.625rem;    /* 26px */
+  --line-height-2xl: 2rem;       /* 32px */
+  --line-height-3xl: 2.5rem;     /* 40px */
+
+  /* Font Weights */
+  --font-weight-thin: 100;
+  --font-weight-extralight: 200;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  h1 {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-5xl);
+    line-height: var(--line-height-3xl);
+    color: var(--color-primary);
+  }
+  
+  h2 {
+    font-weight: var(--font-weight-normal);
+    font-size: var(--font-size-4xl);
+    line-height: var(--line-height-2xl);
+    color: var(--color-text-dark);
+  }
+  
+  h3 {
+    font-weight: var(--font-weight-normal);
+    font-size: var(--font-size-3xl);
+    line-height: var(--line-height-2xl);
+    color: var(--color-text-dark);
+  }
+  
+  h4 {
+    font-weight: var(--font-weight-normal);
+    font-size: var(--font-size-2xl);
+    line-height: var(--line-height-xl);
+    color: var(--color-text-dark);
+  }
+  
+  h5 {
+    font-weight: var(--font-weight-normal);
+    font-size: var(--font-size-xl);
+    line-height: var(--line-height-lg);
+    color: var(--color-text-dark);
+  }
+  
+  h6 {
+    font-weight: var(--font-weight-normal);
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-base);
+    color: var(--color-text-dark);
+  }
+  
+  p {
+    font-family: 'Lato', sans-serif;
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-sm);
+    color: var(--color-text);
+  }
+  
+  p.lead {
+    font-size: var(--font-size-sm);
+  }
+  
+  p.small {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  span {
+    font-family: 'Lato', sans-serif;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .custom-accordion-trigger {
+    font-family: 'Lato', sans-serif;
+  }
+  .header-icon-container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Icon choice list item */
+  .icon-choice {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Button inside the list item */
+  .icon-choice button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: inherit;
+    padding: 0;
+  }
+  
+  /* SVG icon */
+  .icon-choice button svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  /* Text below icon */
+  .icon-choice button span {
+    font-size: 0.85rem;
+  }
 }
+
+
+

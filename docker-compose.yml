@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  storybook:
+    image: storybook-docker
+    container_name: storybook-container
+    ports:
+      - "6006:6006"
+    restart: unless-stopped
