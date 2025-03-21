@@ -21,7 +21,7 @@ const contractInfo = {
     VendorName: "US Foods San Francisco Division",
     Service: "Army",
     LastActionDate: "01/01/2024",
-    Requestor: "John Smith"
+    Requestor: "Pete Campbell"
 }
 
 const formSchema = z.object({
