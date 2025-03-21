@@ -114,7 +114,7 @@ export default function FormPrac() {
                                             <InfoCircledIcon className="h-4 w-4 text-gray-500" />
                                             <Button variant="outline" size="default" type="button">Stock # Lookup</Button>
                                         </div>
-                                        <Form {...form}>
+                                       
                                             <FormField
                                                 control={form.control}
                                                 name="requestNumber"
@@ -214,11 +214,22 @@ export default function FormPrac() {
                                                 )}
                                             />
                                             <div className='flex flex-row gap-2 items-center'>
-                                                <h2 className="text-lg font-semibold">Requesting Customer Information</h2>
+                                                <h2 className="text-lg font-semibold">Requdesting Customer Information</h2>
                                                 <InfoCircledIcon className="h-4 w-4 text-gray-500" />
                                             </div>
-                                          
-                                        </Form>
+                                                <FormField 
+                                                control={form.control}
+                                                name="customerPOC"
+                                                render={({field}) => (
+                                                    <FormItem>
+                                                        <FormLabel>Customer Point of Contact</FormLabel>
+                                                        <FormControl>
+                                                            <Input placeholder="Enter Customer Point of Contact" {...field} />
+                                                        </FormControl>
+                                                    </FormItem>
+                                                 )}
+                                                />
+                                  
                                     </div>
                                 </div>
                                 <div>col 2</div>
