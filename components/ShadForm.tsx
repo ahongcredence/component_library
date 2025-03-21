@@ -161,7 +161,7 @@ export default function ItemRequestForm() {
               </div>
               <div className="flex items-center space-x-2">
                 <Label className="text-xs font-medium">Requestor:</Label>
-                <span className="text-xs">John Smith</span>
+                <span className="text-xs">Jack Sparrow</span>
               </div>
             </div>
           </div>
