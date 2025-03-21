@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import ShadForm from '@/components/ShadForm';
-import FormPrac from '@/components/FormPrac';
+import FormPrac from '@/components/ShadForm2';
 import StoresHeader from '@/components/StoresHeader';
 const meta: Meta<typeof ShadForm> = {
     title: 'Forms/ShadForm2',
