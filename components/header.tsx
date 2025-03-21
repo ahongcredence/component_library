@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { ShoppingCart, HelpCircle, LogOut, User, Search, Menu, X } from 'lucide-react';
+import { ShoppingCart, HelpCircle, LogOut, User, Menu, X } from 'lucide-react';
 import { cn } from "@/lib/utils"
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu"
 
 // Add props interface with isLoggedIn

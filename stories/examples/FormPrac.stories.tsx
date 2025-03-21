@@ -4,7 +4,7 @@ import ShadForm from '@/components/ShadForm';
 import FormPrac from '@/components/FormPrac';
 import StoresHeader from '@/components/StoresHeader';
 const meta: Meta<typeof ShadForm> = {
-    title: 'Forms/FormPrac',
+    title: 'Forms/ShadForm2',
     component: ShadForm,
     parameters: {
         layout: 'fullscreen',

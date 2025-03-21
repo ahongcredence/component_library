@@ -1,5 +1,5 @@
 import React from 'react'
-import { CircleUser, Home, InfoIcon, User } from 'lucide-react'
+import { CircleUser, Home, InfoIcon } from 'lucide-react'
 
 export default function StoresHeader() {
   return (
