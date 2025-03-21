@@ -14,7 +14,7 @@ import { RadioGroup, RadioGroupItem } from './ui/radio-group'
 import { Input } from './ui/input'
 import { InfoCircledIcon } from '@radix-ui/react-icons'
 import { Button } from './ui/button'
-
+import { itemRequestSchema, ItemRequest } from '@/types/schemas/itemRequest'
 
 const contractInfo = {
     Contract: "SPE30020D3276",
@@ -24,37 +24,9 @@ const contractInfo = {
     Requestor: "James Jackson"
 }
 
-const formSchema = z.object({
-    requestNumber: z.string(),
-    requestorType: z.string(),
-    catalogType: z.string(),
-    existsInStores: z.enum(["yes", "no"], {
-        required_error: "Please indicate whether the stock number exists in stores"
-    }),
-    stockNumberBeingReplaced: z.enum(["yes", "no"], {
-        required_error: "Please specify if a stock number is being replaced"
-    }),
-    replacedStockNumber: z.string().optional(),
-    customerPOC: z.string({
-        required_error: "Please enter the customer point of contact"
-    })
-}).refine(
-    (data) => {
-        // Conditional validation for replacedStockNumber
-        if (data.stockNumberBeingReplaced === "yes") {
-            return data.replacedStockNumber && data.replacedStockNumber.trim() !== "";
-        }
-        return true;
-    },
-    {
-        message: "Replaced stock number is required when a stock number is being replaced",
-        path: ["replacedStockNumber"],
-    }
-);
-
 export default function FormPrac() {
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
+    const form = useForm<ItemRequest>({
+        resolver: zodResolver(itemRequestSchema),
         defaultValues: {
             requestNumber: "793001E080485",
             requestorType: "EA",
@@ -65,7 +37,7 @@ export default function FormPrac() {
             customerPOC: "",
         }
     })
-    function onSubmit(data: z.infer<typeof formSchema>) {
+    function onSubmit(data: ItemRequest) {
         console.log("Form submitted:", data);
         form.reset();
         // TODO Process form submission
@@ -111,8 +83,10 @@ export default function FormPrac() {
                                     <div className="space-y-4">
                                         <div className='flex flex-row gap-2 items-center'>
                                             <h2 className="text-lg font-semibold">Request Information</h2>
-                                            <InfoCircledIcon className="h-4 w-4 text-gray-500" />
-                                            <Button variant="outline" size="default" type="button">Stock # Lookup</Button>
+                                            <div className="flex items-center gap-2">
+                                                <InfoCircledIcon className="h-4 w-4 text-gray-500" />
+                                                <Button variant="outline" size="default" type="button">Stock # Lookup</Button>
+                                            </div>
                                         </div>
                                        
                                             <FormField
@@ -206,7 +180,7 @@ export default function FormPrac() {
                                                 name="replacedStockNumber"
                                                 render={({ field }) => (
                                                     <FormItem>
-                                                        <FormLabel>Replaced Stock #</FormLabel>
+                                                        <FormLabel>Replaced Stock # <span className="required-asterisk">**</span></FormLabel>
                                                         <FormControl>
                                                             <Input placeholder="Enter Replaced Stock #" {...field} />
                                                         </FormControl>
@@ -214,22 +188,83 @@ export default function FormPrac() {
                                                 )}
                                             />
                                             <div className='flex flex-row gap-2 items-center'>
-                                                <h2 className="text-lg font-semibold">Requdesting Customer Information</h2>
+                                                <h2 className="text-lg font-semibold">Requesting Customer Information</h2>
                                                 <InfoCircledIcon className="h-4 w-4 text-gray-500" />
                                             </div>
+                                            <div className='grid grid-cols-2 gap-4'>
                                                 <FormField 
                                                 control={form.control}
                                                 name="customerPOC"
                                                 render={({field}) => (
                                                     <FormItem>
-                                                        <FormLabel>Customer Point of Contact</FormLabel>
+                                                        <FormLabel>Customer POC <span className="required-asterisk">*</span></FormLabel>
                                                         <FormControl>
                                                             <Input placeholder="Enter Customer Point of Contact" {...field} />
                                                         </FormControl>
                                                     </FormItem>
                                                  )}
                                                 />
-                                  
+                                                <FormField
+                                                control={form.control}
+                                                name="pocEmail"
+                                                render={({field}) => (
+                                                    <FormItem>
+                                                        <FormLabel>Customer Email <span className="required-asterisk">*</span></FormLabel>
+                                                        <FormControl>
+                                                            <Input placeholder="Enter Customer Email" {...field} />
+                                                        </FormControl>
+                                                    </FormItem>
+                                                 )}
+                                                />
+                                                <FormField
+                                                control={form.control}
+                                                name="installationName"
+                                                render={({field}) => (
+                                                    <FormItem>
+                                                        <FormLabel>Installation Name <span className="required-asterisk">*</span></FormLabel>
+                                                        <FormControl>
+                                                            <Input placeholder="Enter Installation Name" {...field} />
+                                                        </FormControl>
+                                                    </FormItem>
+                                                 )}
+                                                />
+                                                <FormField
+                                                control={form.control}
+                                                name="pocPhone"
+                                                render={({field}) => (
+                                                    <FormItem>
+                                                        <FormLabel>POC Phone <span className="required-asterisk">*</span></FormLabel>
+                                                        <FormControl>
+                                                            <Input placeholder="Enter POC Phone" {...field} />
+                                                        </FormControl>
+                                                    </FormItem>
+                                                 )}
+                                                />
+                                                 <FormField
+                                                control={form.control}
+                                                name="intCallPrefix"
+                                                render={({field}) => (
+                                                    <FormItem>
+                                                        <FormLabel>Int Call Prefix</FormLabel>
+                                                        <FormControl>
+                                                            <Input placeholder="Enter Int Call Prefix" {...field} />
+                                                        </FormControl>
+                                                    </FormItem>
+                                                 )}
+                                                />
+                                                <FormField
+                                                control={form.control}
+                                                name="pocPhone"
+                                                render={({field}) => (
+                                                    <FormItem>
+                                                        <FormLabel>Originating Ordering Point</FormLabel>
+                                                        <FormControl>
+                                                            <Input placeholder="Enter Originating Ordering Point" {...field} />
+                                                        </FormControl>
+                                                    </FormItem>
+                                                 )}
+                                                />
+                                            </div>
                                     </div>
                                 </div>
                                 <div>col 2</div>

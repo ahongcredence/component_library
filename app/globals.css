@@ -163,6 +163,10 @@
   .icon-choice button span {
     font-size: 0.85rem;
   }
+
+  .required-asterisk {
+    color: red;
+  }
 }
 
 
