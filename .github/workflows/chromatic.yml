@@ -9,6 +9,7 @@ on:
       - 'stories/**'
       - '.storybook/**'
       - 'public/**'
+      - '.storybook/**/**'
   workflow_dispatch:
     inputs:
       dummy:
