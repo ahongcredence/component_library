@@ -10,7 +10,11 @@ on:
       - '.storybook/**'
       - 'public/**'
   workflow_dispatch:
-  
+    inputs:
+      dummy:
+        description: 'Dummy input to trigger the workflow manually'
+        required: false
+        default: 'dummy'
 
 jobs:
   chromatic:
