@@ -33,7 +33,7 @@ export const Default: Story = {
   render: (args) => { 
     const [visible, setIsVisible] = React.useState(true)
     if (!visible) {
-      return <div></div>;
+      return <div>Alert Closed</div>;
     }
     return (
     <Alert {...args} onClose={() => setIsVisible(false)}>
@@ -49,16 +49,21 @@ export const Default: Story = {
   }
 }
 
-export const Destructive: Story = {
-  render: (args) => (
-    <Alert {...args}>
+export const Error: Story = {
+  render: (args) => {
+    const [visible, setIsVisible] = React.useState(true)
+    if (!visible) {
+      return <div>Alert Closed</div>;
+    }
+    return (
+      <Alert {...args} onClose={() => setIsVisible(false)}>
       <AlertTriangle />
       <AlertTitle>Error</AlertTitle>
       <AlertDescription>
         Your session has expired. Please log in again.
       </AlertDescription>
     </Alert>
-  ),
+  )},
   args: {
     variant: "error",
     closable: true
@@ -66,34 +71,23 @@ export const Destructive: Story = {
 }
 
 export const Warning: Story = {
-  render: (args) => (
-    <Alert {...args}>
+  render: (args) => {
+    const [visible, setIsVisible] = React.useState(true)
+    if (!visible) {
+      return <div>Alert Closed</div>;
+    }
+    return(
+      <Alert {...args} onClose={() => setIsVisible(false)}>
       <AlertTriangle />
       <AlertTitle>Warning</AlertTitle>
       <AlertDescription>
         This Space for Urgent Messages if Needed
       </AlertDescription>
     </Alert>
-  ),
+  )},
   args: {
     variant: "warning",
     closable: true // Enable the close button for warning alerts
-  }
-}
-
-export const WithIcon: Story = {
-  render: (args) => (
-    <Alert {...args}>
-      <InfoIcon />
-      <AlertTitle>Note</AlertTitle>
-      <AlertDescription>
-        This action cannot be undone. This will permanently delete your account
-        and remove your data from our servers.
-      </AlertDescription>
-    </Alert>
-  ),
-  args: {
-    variant: "default"
   }
 }
 
