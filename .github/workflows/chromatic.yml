@@ -27,7 +27,7 @@ jobs:
         # ⚠️ See your package manager's documentation for the correct command to install dependencies in a CI environment.
         run: npm ci
       
-      - name: Install Tailwind Oxide Linux binary
+      - name: Install the Tailwind Oxide Linux binary
         run: npm install @tailwindcss/oxide-linux-x64-gnu
       
 
