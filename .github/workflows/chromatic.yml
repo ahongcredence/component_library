@@ -9,6 +9,8 @@ on:
       - 'stories/**'
       - '.storybook/**'
       - 'public/**'
+  workflow_dispatch:
+  
 
 jobs:
   chromatic:
